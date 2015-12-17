@@ -4,8 +4,9 @@ app.controller('mainCtrl', function($scope, PostsSrvc){
   $scope.test = 'poop';
   $scope.posts = [];
 
-  $scope.playtext = function(message){
-    responsiveVoice.speak(message);
+  $scope.readPost = function(link){
+    console.log(link);
+    // responsiveVoice.speak(message);
   }
 
   PostsSrvc.fetchPosts().then(function(res){
