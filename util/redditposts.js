@@ -3,23 +3,28 @@
 var request = require('request');
 var cheerio = require('cheerio');
 
+var REDDIT_URL = 'https://www.reddit.com'
+
 var Redditposts = {}
+var lastFetchTime = 0;
+var postsCache = [];
 
 Redditposts.fetch = function(subreddit, cb){
-  request.get(`https://www.reddit.com/r/${subreddit}`, function(err, res, html){
+  request.get(`${REDDIT_URL}/r/${subreddit}`, function(err, res, html){
     if (err) return cb(err);
+    // if (lastFetchTime > (Date.now - 5*60*1000)) return cb(null, postsCache);
     var $ = cheerio.load(html);
     var posts = $('div.thing');
 
-    var postData = [];
+    postsCache = [];
     posts.each((i,el) => {
-      postData.push({
+      postsCache.push({
         title: $(el).find('a.title.may-blank').text(),
-        link: $(el).find('a.title.may-blank').attr('href'),
+        link: REDDIT_URL + $(el).find('a.title.may-blank').attr('href'),
         score: $(el).find('div.score.unvoted').text()
       })
     })
-    cb(null, postData)
+    cb(null, postsCache)
   })
 }
 
