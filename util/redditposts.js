@@ -32,12 +32,13 @@ Redditposts.fetchPostContent = function(url, cb){
   request.get(url, function(err, res, html){
     if (err) return cb(err);
     var $ = cheerio.load(html);
-    var comments = $('.md')
     var commentsData = [];
+    var comments = $('.thing .md')
     comments.each((i,div) => {
       var content = '';
       $(div).find('p').each((i,p) => {
-        content = content.concat($(p).html());
+        console.log($(p).text());
+        content = content.concat($(p).text());
       })
       commentsData.push(content)
     })

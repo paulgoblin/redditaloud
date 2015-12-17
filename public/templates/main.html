@@ -17,7 +17,8 @@
     <div class="col-xs-10">
       <a href={{post.link}}>{{post.title}}</a>
       <div class='floatRight'>
-        <button class="btn btn-default" ng-click="readPost(post.link)">Play this post</button>
+        <button class="btn btn-default" ng-click="readPost(post)">Start Listening</button>
+        <button class="btn btn-default" ng-click="togglePause()">Stop</button>
       </div>
     </div>
   </div>
