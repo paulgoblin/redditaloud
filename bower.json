@@ -1,0 +1,24 @@
+{
+  "name": "generate",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Paul Richter <mpr75@cornell.edu>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular-ui-router": "~0.2.15",
+    "angular": "~1.4.8"
+  }
+}
