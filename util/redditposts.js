@@ -12,7 +12,7 @@ var postsCache = [];
 Redditposts.fetch = function(subreddit, cb){
   request.get(`${REDDIT_URL}/r/${subreddit}`, function(err, res, html){
     if (err) return cb(err);
-    // if (lastFetchTime > (Date.now - 5*60*1000)) return cb(null, postsCache);
+    if (lastFetchTime > (Date.now - 5*60*1000)) return cb(null, postsCache);
     var $ = cheerio.load(html);
     var posts = $('div.thing');
 
