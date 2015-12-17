@@ -6,6 +6,9 @@
     "start": "node app.js",
     "setup": "rm -rf node_modules public/vendor && npm i && bower i"
   },
+  "engines":{
+    "node":"5.2.0"
+  },
   "dependencies": {
     "body-parser": "~1.13.2",
     "bower": "^1.7.1",
