@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
+    "postinstall": "bower i",
     "setup": "rm -rf node_modules public/vendor && npm i && bower i"
   },
   "dependencies": {
