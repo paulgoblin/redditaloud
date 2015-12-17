@@ -28,4 +28,12 @@ Redditposts.fetch = function(subreddit, cb){
   })
 }
 
+Redditposts.fetchPostContent = function(url, cb){
+  request.get(url, function(err, res, html){
+    if (err) return cb(err);
+    var $ = cheerio.load(html);
+    return cb(null, html.slice(0,400))
+  })
+}
+
 module.exports = Redditposts

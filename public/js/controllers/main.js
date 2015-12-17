@@ -5,8 +5,12 @@ app.controller('mainCtrl', function($scope, PostsSrvc){
   $scope.posts = [];
 
   $scope.readPost = function(link){
-    console.log(link);
-    // responsiveVoice.speak(message);
+    PostsSrvc.fetchPostContent(link).then(function(res){
+      console.log(res.data);
+      responsiveVoice.speak("hello world");
+    }, function(err){
+      console.log(err);
+    })
   }
 
   PostsSrvc.fetchPosts().then(function(res){
